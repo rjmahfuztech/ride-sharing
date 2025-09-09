@@ -25,7 +25,7 @@ class Ride:
         self.end_time = None
         self.driver = None
         self.rider = None
-        self.estimated_fare = None
+        self.estimated_fare = self.calculate_fare(vehicle) # here is problem
         self.vehicle = vehicle
 
     def set_driver(self, driver):
@@ -38,6 +38,16 @@ class Ride:
         self.end_time = datetime.now()
         self.rider.wallet -= self.estimated_fare
         self.driver.wallet += self.estimated_fare
+
+    # Total cost - fare calculation
+    def calculate_fare(self, vehicle):
+        distance = 10
+        fare_per_km = {
+            'car': 30,
+            'bike': 20,
+            'cng': 25
+        }
+        return distance * fare_per_km.get(vehicle)
 
     def __repr__(self):
         return f"Ride details: start location - {self.start_location} and end location - {self.end_location}"
