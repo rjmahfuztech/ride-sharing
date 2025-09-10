@@ -25,7 +25,7 @@ class Ride:
         self.end_time = None
         self.driver = None
         self.rider = None
-        self.estimated_fare = self.calculate_fare(vehicle) # here is problem
+        self.estimated_fare = self.calculate_fare(vehicle.vehicle_type) # here is problem
         self.vehicle = vehicle
 
     def set_driver(self, driver):
@@ -41,6 +41,7 @@ class Ride:
 
     # Total cost - fare calculation
     def calculate_fare(self, vehicle):
+        print(vehicle)
         distance = 10
         fare_per_km = {
             'car': 30,
@@ -69,9 +70,9 @@ class RideMatching:
             driver = self.available_drivers[0]
 
             if vehicle_type == 'car':
-                vehicle = Car('Car', 'ABC123', 45)
+                vehicle = Car('car', 'ABC123', 45)
             elif vehicle_type == 'bike':
-                vehicle = Bike('Bike', 'XYZ345', 30)
+                vehicle = Bike('bike', 'XYZ345', 30)
             
             ride = Ride(ride_request.rider.current_location, ride_request.end_location, vehicle)
             # set ride to driver

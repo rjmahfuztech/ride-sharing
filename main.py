@@ -12,9 +12,9 @@ rifat = Driver("Rifat Khan", "rifat@gmail.com", 22200, "Gulshan")
 ride_share.add_drivers(rifat)
 
 jisan.request_ride(ride_share, 'Uttara', 'car')
-jisan.show_current_ride()
 
 rifat.reach_destination(jisan.current_ride)
+jisan.show_current_ride()
 
 
 print(ride_share)
